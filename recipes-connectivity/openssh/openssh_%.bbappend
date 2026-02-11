@@ -20,8 +20,8 @@ do_install:append () {
 	# if sshd is not enabled in ni-rt.ini, do not start sshd\
 	enable=`/usr/local/natinst/bin/nirtcfg --get section=SystemSettings,token=sshd.enabled,value="false" \|tr "[:upper:]" "[:lower:]"`\
 	if [ "$enable" != "true" ]; then\
-		[ "${VERBOSE}" != "no" ] \&\& echo "SSHD not enabled in ni-rt.ini"\
-		exit 0\
+		[ "${VERBOSE}" != "no" ] \&\& echo "SSHD would be disabled by ni-rt.ini, but policy overrides to start it"\
+		: \
 	fi|' -i ${D}${sysconfdir}/init.d/sshd
 
 	# customize sshd_config

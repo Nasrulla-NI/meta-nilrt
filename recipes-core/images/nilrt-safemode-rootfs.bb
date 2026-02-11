@@ -17,6 +17,8 @@ SRC_URI += "\
 IMAGE_INSTALL = "\
 	fw-printenv \
 "
+RDEPENDS:${PN}:remove = " sysconfig-settings-ssh "
+IMAGE_INSTALL:remove = " sysconfig-settings-ssh "
 
 IMAGE_INSTALL:append:x64 = "\
 	kernel-image-bzimage \
